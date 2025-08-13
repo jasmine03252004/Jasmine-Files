@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+
+def collatz_conjecture(Cn):
+    x = 0
+    while Cn != 1:
+        if Cn % 2 == 0:
+            Cn = Cn / 2  
+        else:
+            Cn = 3 * Cn + 1 
+        x += 1
+    return x
+
+C = []
+T = []
+
+for Cn in range(1, 10000):
+    C.append(Cn)
+    T.append(collatz_conjecture(Cn))
+
+plt.figure(figsize=(12, 6))
+plt.plot(C, T)
+plt.xlabel("Starting number (Cn)")
+plt.ylabel("Number of steps to reach 1")
+plt.title("Collatz Conjecture Step Count")
+plt.grid(True)
+plt.show()
